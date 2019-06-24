@@ -25,34 +25,67 @@ l = []
 L = []
 turn = 0
 result = []
-while turn < 10 :
-    answer=input("Bulls and Cows! 4자리의 숫자를 입력하세요.") # input은 문자 값으로 입력 받는다.
-    #L=",".join(answer)
-    for W in answer: #문자로 받은 값을 썰어서 예 1234 이면 '1','2','3','4' 나옴
-        a=int(W)  #int 로 1,2,3,4로 나오게 만든다.
-        L.append(a) #L은 리스트 형식으로 append를 이용해서 하나씩 순서대로 1->2->3->4 들어가고
-    print(L) #[1,2,3,4]가 나온다. 젠장 뻘짓 오지게 했으니 안까먹겠네.
-    if L != 0:
-        while i < 4:
-            r = random.randrange(0, 10)
-            l.append(r)
-            i = i + 1
-        print(l)
-        for w in range(len(l)):
-            try:
-                if l[w] == L[w]:
-                    result.insert(w, "C")
-                else:
-                    result.insert(w, "B")
-            except ValueError:
-                print("4자리 입력하세요.현재 턴 {}".format(turn))
-                pass
-            except IndexError:
-                print("4자리 입력하세요.현재 턴 {}".format(turn))
-                pass
-            except L==" ":
-                print("값이 부족합니다. 현재 턴 {}".format(turn))
-                pass
-    print("결과: {} 현재 턴:{}".format(result,turn))
+while turn < 11:
+    answer = input("Bulls and Cows! 4자리의 숫자를 입력하세요.")  # input 은 문자 값으로 입력 받는다.
+    # L=",".join(answer)
+    try:
+        for W in answer:  # 문자로 받은 값을 썰어서 예 1234 이면 '1','2','3','4' 나옴
+            a = int(W)  # int 로 1,2,3,4로 나오게 만든다.
+            L.append(a)  # L은 리스트 형식으로 append 를 이용해서 하나씩 순서대로 1->2->3->4 들어가고
+        print(L)  # [1,2,3,4]가 나온다. 젠장 뻘짓 오지게 했으니 안까먹겠네.
+        print(len(L))
+        if L != 0:
+            while i < 4:
+                r = random.randrange(0, 10)
+                l.append(r)
+                i = i + 1
+            print(l)
+
+        for w in range(len(l)):  # l의 길이만큼 반복하여 l과 L의 리스트 값 비교
+            if l[w] == L[w]:
+                result.insert(w, "C")  # 정답
+            else:
+                result.insert(w, "B")  # 오답
+    except ValueError:
+        print("숫자 4자리 입력하세요.1현재 턴 {}".format(turn))
+        turn = turn - 1
+        pass
+    except IndexError:
+        print("4자리 입력하세요.2현재 턴 {}".format(turn))
+        turn = turn - 1
+        pass
+    if 4 < len(L):
+        print("값이 많습니다. 5현재 턴 {}".format(turn))
+        turn = turn - 1
+        pass
+
+    elif turn < 0:
+        turn = 0  # 턴이 마이너스 값이 되지 않도록 마지막에 조정.
+
+    elif turn == 10:
+        a = input("GAMEOVER 재시도는 1번 0번은 종료")
+        if a == '1':
+            del L[:], result[:]
+            turn = 0
+            continue
+        elif a == '0':
+            break
+        else:
+            print("잘못입력하였습니다.")
+
+    elif result[:] == ['C', 'C', 'C', 'C']:
+        turn = 10
+        a = input("문제해결 재시도는 1번 0번은 종료")
+        if a == '1':
+            del L[:], result[:]
+            turn = 0
+            continue
+        elif a == '0':
+            break
+        else:
+            print("잘못입력하였습니다.")
+    print("결과: {} 현재 턴:{}".format(result, turn))
     turn = turn + 1
-    del L[:],result[:] #list 값 초기화
+    del L[:], result[:]  # list 값 초기화
+
+# 코드가 전체적으로 정리가 더 필요할거 같은데, 지금 실력으로 어떻게 접근해야 하나 싶다.
