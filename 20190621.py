@@ -67,9 +67,11 @@ while turn < 11:
         if a == '1':
             del L[:], result[:]
             turn = 0
-            continue
+            i = 0  # i 값 초기화로 랜덤값 초기화
+            del l[:]  # 리스트 초기화
+            continue  # 재시작 while 로
         elif a == '0':
-            break
+            break # 종료
         else:
             print("잘못입력하였습니다.")
 
@@ -79,9 +81,11 @@ while turn < 11:
         if a == '1':
             del L[:], result[:]
             turn = 0
-            continue
+            i=0 # i 값 초기화로 랜덤값 초기화
+            del l[:] # 리스트 초기화
+            continue # 재시작 while 로
         elif a == '0':
-            break
+            break # 종료
         else:
             print("잘못입력하였습니다.")
     print("결과: {} 현재 턴:{}".format(result, turn))
