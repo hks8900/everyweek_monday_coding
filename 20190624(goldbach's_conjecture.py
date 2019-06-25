@@ -9,29 +9,22 @@
 
 입력예2: n=48
 출력예2 [[5, 43], [7, 41], [11, 37], [17, 31], [19, 29]]
-
 """
-i=0
-n=0
-m=0
-r2=n/m
-while True:
-    num=int(input("숫자 입력"))
-    l=num%2
-    if l == 0 and num > 2:
+a = []
+num = int(input("숫자 입력"))
+l = num % 2
+y=range(num)
 
-        while m < 100:
-            m+=1
-            while n < 100:
-                n+=1
-                if r == 1 and n == m:
-                    r = n / m
-        
-
-
-
-    else:
-        print("2보다 큰 짝수 입력하세요.")
+if num >= 2 and l == 0:
+    for i in range(num):
+        for j in range(num):
+            result = i + j
+            if num == result and 1 == j % 2 and 1 == i % 2:
+                a.append([i, j])
+                print(a)
+                continue
+else:
+    print("2보다 큰 짝수 입력하세요.")
 
 
 
