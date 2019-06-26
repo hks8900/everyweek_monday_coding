@@ -20,11 +20,11 @@ ave=0
 while True:
     num = int(input("입력할 정수 입력"))
 
-    for i in range(0, num):
+    for i in range(0, num): # 정수 값 만큼 반복
         n = int(input("숫자"))
         sum = m + n
-        m = sum
+        m = sum # 값을 뺴놓고 다시 위로 올려서 추가 값과 더한다. 그럼 총 합의 완성!
     print("총 합",sum)
     ave = sum / num  # 평균
     print("평균",ave)
-del sum, ave
+del sum, ave # 초기화 
