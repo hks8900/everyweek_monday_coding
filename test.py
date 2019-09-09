@@ -27,40 +27,65 @@ http://codingdojang.com/scode/673?answer_mode=hide
 """
 x = input("1.수 입력")
 y = input("2.수 입력")
-#print(x[3:4])
+# print(x[3:4])
+z = []
+zz = []
+result = []
+num = 1
+if len(x) >  len(y):  # 입력 된 것 중 길이 긴 값으로 "0" 리스트 생성
+    for i in range(0, len(x)):
+        result.append(0)
+else:
+    for i in range(0, len(y)):
+        result.append(0)
 
-for j in range(0,len(y)):
-    for i in range(0,len(x)):
-        t = x[(len(x)-(i+1)):(len(x)-i)] #
-        """
-        t 에 수 입력1234 하는 경우 아래와 같이 나온다.
-                    4
-                    3
-                    2
-                    1
-        """
-        test = x[(len(x)-(i+1)):(len(x))]
-        print(test)
-        """
-        test 수 입력1234
-            4
-            34
-            234
-            1234
-        """
-        x = input("1.수 입력")
-        y = input("2.수 입력")
-        # print(x[3:4])
-        z = []
+for i in range(0, len(result)): # 각 자리 비교하여 큰 값 입력
+    t = x[(len(x) - (i + 1)):(len(x) - i)]
+    r = y[(len(y) - (i + 1)):(len(y) - i)]
+    if t >= r:
+        z.append(t)
+    else:
+        z.append(r)
 
-        for i in range(0, len(x)):
-            t = x[(len(x) - (i + 1)):(len(x) - i)]
-            r = y[(len(y) - (i + 1)):(len(y) - i)]
-            if t >= r:
-                z.append(t)
-                z[-1]
-                print(z)
+for i in z:
+    result[-num]=i # append로 바뀐 순서 역순 정렬
+    num += 1
 
-        for i in range(0, len(x)):
-            test = x[(len(x) - (i + 1)):(len(x))]
-            print(test)
+print("{}".format(y))
+print("+{}".format(x))
+print("---------")
+print(result)   # 합 계산 완료!
+print("""-----------------------------------------------------------------------""")
+
+
+x2 = []
+y2 = []
+for i in y:
+    y2.append(i)
+yy = y2
+for i in x:
+    x2.append(i)
+xy = x2
+pre = 0
+for i in range(0, len(result)):
+    xx = x[(len(x) - (i + 1)):(len(x) - i)]
+    rr = y[(len(y) - (i + 1)):(len(y) - i)]
+
+    if xx <= rr:
+        yy.pop(-(i + 1), )
+        rt = xy(-(i + 1), )
+        yy[-(i+1):len(yy)] =
+        if i != 0:
+            yy.append(0)
+            yy2 = list(map(int, yy))
+            print(yy2)
+    print("xxyy",yy)
+
+print("yy",yy2)
+
+
+#yy2 = list(map(int,yy))
+# xr=yy2*(10**i)
+
+
+
